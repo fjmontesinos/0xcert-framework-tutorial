@@ -1,0 +1,105 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Asset management</title>
+    <meta name="description" content="Asset management tutorial with the 0xcert Framework.">
+    <meta name="author" content="Tadej Vengust">
+    <!-- Importing jQuery for ajax calls. -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- ******** Input boxes for deploying an asset ledger. ******** -->
+    <h1>Deploy an asset ledger</h1>
+    <input id="name" type="text" placeholder="Name" /><br/>
+    <input id="symbol" type="text" placeholder="Symbol" /><br/>
+    <input id="uriPrefix" type="text" placeholder="Prefix uri (http://localhos:8000/assets/)" /><br/>
+    <input id="uriPostfix" type="text" placeholder="Postfix uri (.json)" /><br/>
+    <input id="schemaId" type="text" placeholder="Schema Id" /><br/><br/>
+    <input type="checkbox" value="1" />Asset owner can destory the asset<br/>
+    <input type="checkbox" value="2" />Asset ledger owner can update assets<br/>
+    <input type="checkbox" value="3" />Asset ledger owner can stop/start all asset transfers<br/>
+    <input type="checkbox" value="4" />Asset ledger owner can revoke (destroy) any asset<br/><br/>
+    <button id="deploy">Deploy</button>
+    <p id="deployConsole"></p>
+
+
+
+    <script>
+        // Setting ajax to use JSON.
+        $.ajax({
+            contentType: 'application/json'
+        });
+
+        $(function() {
+            $('#deploy').click(function() {
+                // Reading checkboxes for capabilities.
+                const capabilities = [];
+                $("input:checkbox:checked").each(function() {
+                    capabilities.push($(this).val());
+                });
+
+                // Calling deploy API with parameters.
+                $.post(
+                    "http://localhost:3000/deploy", {
+                        name: $('#name').val(),
+                        symbol: $('#symbol').val(),
+                        uriPrefix: $('#uriPrefix').val(),
+                        uriPostfix: $('#uriPostfix').val(),
+                        schemaId: $('#schemaId').val(),
+                        capabilities: capabilities
+                    },
+                    function(response) {
+                        $('#deployConsole').html('<a href="http://ropsten.etherscan.io/tx/' + response + '" target="_blank">Check transaction on Etherscan</a>.');
+                    }
+                );
+            });
+
+            /*
+            $('#create').click(function() {
+                // Calling create API with parameters.
+                $.post(
+                    "http://localhost:3000/create", {
+                        assetLedgerId: $('#address').val(),
+                        receiverId: $('#recipient').val(),
+                        id: $('#id').val(),
+                        imprint: $('#imprint').val()
+                    },
+                    function(response) {
+                        $('#createConsole').html('<a href="https://ropsten.etherscan.io/tx/' + response + '" target="_blank">Check transaction on block explorer</a>.');
+                    }
+                );
+            });
+
+            $('#transfer').click(function() {
+                // Calling transfer API with parameters.
+                $.post(
+                    "http://localhost:3000/transfer", {
+                        assetLedgerId: $('#address').val(),
+                        receiverId: $('#recipientAddress').val(),
+                        id: $('#assetId').val(),
+                    },
+                    function(response) {
+                        $('#transferConsole').html('<a href="https://ropsten.etherscan.io/tx/' + response + '" target="_blank">Check transaction on etherscan</a>.');
+                    }
+                );
+            });
+
+            $('#atomicOrder').click(function() {
+                // Calling atomic-order API with parameters.
+                $.post(
+                    "http://localhost:3000/atomic-order", {},
+                    function(response) {
+                        $('#atomicOrderConsole').html('<a href="https://ropsten.etherscan.io/tx/' + response + '" target="_blank">Check transaction on etherscan</a>.');
+                    }
+                );
+            });
+            */
+        });
+    </script>
+</body>
+
+</html>
