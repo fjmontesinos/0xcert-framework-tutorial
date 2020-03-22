@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { HttpProvider } from '@0xcert/ethereum-http-provider';
-import { AssetLedger, AssetLedgerAbility } from '@0xcert/ethereum-asset-ledger';
+import { AssetLedger } from '@0xcert/ethereum-asset-ledger';
 
 const app = express();
 app.use(bodyParser.urlencoded({
