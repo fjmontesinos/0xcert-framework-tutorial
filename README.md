@@ -1,6 +1,7 @@
 # 0xcert Framework Tutorial en Ganache
 
-Este repositorio contiene las pruebas realizadas para probar el [Tutorial de 0xcert Framework](https://0xcert.org/news/0xcert-framework-tutorial-1-run-and-prepare-geth-node-for-backend-integration/) sobre Ganache utilizando HttpProvider.
+Este repositorio contiene las pruebas realizadas para probar el [Tutorial de 0xcert Framework](https://0xcert.org/news/0xcert-framework-tutorial-1-run-and-prepare-geth-node-for-backend-integration/) sobre Ganache utilizando HttpProvider. 
+Se ha usado de base el código disponible en el siguiente repositorio de Github: [ethereum example](https://github.com/MoMannn/ethereum-example)
 
 Este tutorial crea una API Rest con Express que una aplicación web consume mediante peticiones ajax con jQuery.
 
@@ -25,7 +26,7 @@ Una vez realizados estos sencillos pasos, podremos acceder a la aplicación desd
 
 **Siguientes pasos:** 
 
-1. Utilizar el recurso de [Certificación de 0xcert](https://docs.0xcert.org/framework/v2/guides/certification.html) para crear un Token ERC721 que represente un certificado que registre en Ganache un certificado con su schemaId e imprint correctos de forma que se puedan enviar a un tercero una evidencia del certificado y que este pueda verificarlos.
+1. Utilizar el recurso de [Certificación de 0xcert](https://docs.0xcert.org/framework/v2/guides/certification.html) para crear un Token ERC721 que represente un certificado que registre en Ganache un certificado con su schemaId e imprint correctos de forma que se puedan enviar a un tercero una evidencia del certificado y que este pueda verificarlos. [Ejemplo de Certificación](https://codesandbox.io/s/github/0xcert/example-certification?module=%2FREADME.md)
 2. Tras probar que lo anterior funciona sobre Ganache, realizar pruebas sobre una de las testnets disponible de Ethereum como pueda ser `Rinkeby`
 
 ## 1. <a name="clone-and-build"></a>Clonar el proyecto y hacer build
