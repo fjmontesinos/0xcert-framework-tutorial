@@ -46,7 +46,17 @@ app.post('/create', async (req, res) => {
         id: req.body.id,
         imprint: req.body.imprint
     });
-    
+
+    res.send(mutation.id);
+});
+
+app.post('/transfer', async (req, res) => {
+    const ledger = AssetLedger.getInstance(provider, req.body.assetLedgerId);
+    const mutation = await ledger.transferAsset({
+        receiverId: req.body.receiverId,
+        id: req.body.id,
+    });
+
     res.send(mutation.id);
 });
 

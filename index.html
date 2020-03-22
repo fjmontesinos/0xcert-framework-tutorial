@@ -35,6 +35,14 @@
     <button id="create">Create</button>
     <p id="createConsole"></p>
 
+    <!-- ******** Input boxes for transferring an asset. ******** -->
+    <h1>Transfer an asset</h1>
+    <input id="addressSC" type="text" placeholder="Asset ledger Id" /><br/>
+    <input id="assetId" type="text" placeholder="Id" /><br/>
+    <input id="recipientAddress" type="text" placeholder="Recipient address" /><br/>
+    <button id="transfer">Transfer</button>
+    <p id="transferConsole"></p>
+
 
     <script>
         // Setting ajax to use JSON.
@@ -82,12 +90,11 @@
                 );
             });
 
-            /*
             $('#transfer').click(function() {
                 // Calling transfer API with parameters.
                 $.post(
                     "http://localhost:3000/transfer", {
-                        assetLedgerId: $('#address').val(),
+                        assetLedgerId: $('#addressSC').val(),
                         receiverId: $('#recipientAddress').val(),
                         id: $('#assetId').val(),
                     },
@@ -96,6 +103,8 @@
                     }
                 );
             });
+
+            /*
 
             $('#atomicOrder').click(function() {
                 // Calling atomic-order API with parameters.
