@@ -23,6 +23,11 @@ Una vez realizados estos sencillos pasos, podremos acceder a la aplicación desd
 * Crear un asset nuevo en el sc creado anteriormente
 * Transferir a otra cuenta el asset creado (deberemos asegurarnos que el asset lo creamos asociado a la cuenta establecida en el provider para que se pueda realizar la transferencia, en caso contrario deberíamos cambiar el código e implementar un provider con la cuenta propietaria del asset)
 
+**Siguientes pasos:** 
+
+1. Utilizar el recurso de [Certificación de 0xcert](https://docs.0xcert.org/framework/v2/guides/certification.html) para crear un Token ERC721 que represente un certificado que registre en Ganache un certificado con su schemaId e imprint correctos de forma que se puedan enviar a un tercero una evidencia del certificado y que este pueda verificarlos.
+2. Tras probar que lo anterior funciona sobre Ganache, realizar pruebas sobre una de las testnets disponible de Ethereum como pueda ser `Rinkeby`
+
 ## 1. <a name="clone-and-build"></a>Clonar el proyecto y hacer build
 
 Para lanzar la prueba del proyecto no tenemos más que clonar el proyecto y hacer un build de los paquetes npm, para ello no tendremos más que ejecutar el siguiente comando:
