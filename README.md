@@ -1,6 +1,6 @@
 # 0xcert Framework Tutorial en Ganache
 
-Este repositorio contiene las pruebas realizadas para probar el [Tutorial de 0xcert Framework](https://0xcert.org/news/0xcert-framework-tutorial-1-run-and-prepare-geth-node-for-backend-integration/) sobre Ganache utilizando HttpProvider. 
+Este repositorio contiene las pruebas realizadas para probar el [Tutorial de 0xcert Framework](https://0xcert.org/news/0xcert-framework-tutorial-1-run-and-prepare-geth-node-for-backend-integration/) sobre Ganache utilizando HttpProvider con la versión 2.0 del framework. 
 Se ha usado de base el código disponible en el siguiente repositorio de Github: [ethereum example](https://github.com/MoMannn/ethereum-example)
 
 Este tutorial crea una API Rest con Express que una aplicación web consume mediante peticiones ajax con jQuery.
@@ -18,7 +18,9 @@ Una vez tenemos estos componentes instalados en el equipo podemos probar el desa
 - [Iniciar Express(node) API Rest](#init-express)
 - [Iniciar App Web](#init-webapp)
 
-Una vez realizados estos sencillos pasos, podremos acceder a la aplicación desde cualquier navegador web con la url `http://localhost:8000` y ejecutar las diferentes opciones disponibles siguiendo los pasos de ejecución regocigos en el tutorial de 0xcert a la hora de establecer el schema Id del Token No Fungible, la dirección del smart contract asociado al asset ledger desplegado o informar el imprint del token que vamos a crear:
+Una vez realizados estos sencillos pasos, podremos acceder a la aplicación desde cualquier navegador web con la url `http://localhost:8000` y ejecutar las diferentes opciones disponibles siguiendo los pasos de ejecución regocigos en el tutorial de 0xcert a la hora de establecer el schemaId del Token No Fungible, la dirección del smart contract asociado al asset ledger desplegado o informar el imprint del token que vamos a crear:
+
+> Se considera a modo de prueba tanto para el schemaId como para el imprint el valor: 0000000000000000000000000000000000000000000000000000000000000000
 
 * Desplegar un smart contract (ERC721) asociado al asset ledger que queremos
 * Crear un asset nuevo en el sc creado anteriormente
