@@ -26,6 +26,14 @@
     <button id="deploy">Deploy</button>
     <p id="deployConsole"></p>
 
+    <!-- ******** Input boxes for creating an asset. ******** -->
+    <h1>Create an asset</h1>
+    <input id="address" type="text" placeholder="Asset ledger Id" /><br/>
+    <input id="id" type="text" placeholder="Id" /><br/>
+    <input id="recipient" type="text" placeholder="Recipient address" /><br/>
+    <input id="imprint" type="text" placeholder="Imprint" /><br/>
+    <button id="create">Create</button>
+    <p id="createConsole"></p>
 
 
     <script>
@@ -58,7 +66,7 @@
                 );
             });
 
-            /*
+
             $('#create').click(function() {
                 // Calling create API with parameters.
                 $.post(
@@ -74,6 +82,7 @@
                 );
             });
 
+            /*
             $('#transfer').click(function() {
                 // Calling transfer API with parameters.
                 $.post(

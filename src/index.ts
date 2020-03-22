@@ -26,8 +26,6 @@ const provider = new HttpProvider({
 });
 
 app.post('/deploy', async (req, res) => {
-    console.log(req.body.name);
-
     const mutation = await AssetLedger.deploy(provider, {
         name: req.body.name,
         symbol: req.body.symbol,
@@ -35,10 +33,21 @@ app.post('/deploy', async (req, res) => {
         uriPostfix: req.body.uriPostfix,
         schemaId: req.body.schemaId,
         capabilities: req.body.capabilities
-      }); // You can catch errors by adding .catch((e) => console.log(e)).
+    }); // You can catch errors by adding .catch((e) => console.log(e)).
 
-      res.send(mutation.id);
+    res.send(mutation.id);
 
+});
+
+app.post('/create', async (req, res) => {
+    const ledger = AssetLedger.getInstance(provider, req.body.assetLedgerId);
+    const mutation = await ledger.createAsset({
+        receiverId: req.body.receiverId,
+        id: req.body.id,
+        imprint: req.body.imprint
+    });
+    
+    res.send(mutation.id);
 });
 
 app.get('/', (req, res) => {
