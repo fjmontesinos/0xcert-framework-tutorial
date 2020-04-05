@@ -90,7 +90,7 @@ En la configuración del provider del api REST deberemos confirmar esta cuenta:
 const provider = new HttpProvider({
     url: 'http://localhost:8545',
     requiredConfirmations: 1,
-    accountId: '0x60830a96c835C488A53ac763270d701748505298',
+    accountId: '<YOUR ADDRESS>',
 });
 ```
 
