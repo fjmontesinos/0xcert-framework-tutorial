@@ -60,6 +60,40 @@ Lanzaremos el servicio con el siguiente comando desde una ventana de terminal:
 $ ganache-cli -m="belt allow snack gain mom rug wave inflict risk verb health notable" -p=8545
 ```
 
+### 2.1. Despliegue con una testnet como Rinkeby 
+
+Si quisieramos lanzar con un nodo geth contra Rinkeby por ejemplo, deberíamos [instalar geth](https://gist.github.com/cryptogoth/10a98e8078cfd69f7ca892ddbdcf26bc) y una vez instalado ejecutar:
+
+```console
+geth --rinkeby --syncmode "light" --rpc --rpcaddr "0.0.0.0" --rpcport "8545" --rpccorsdomain "*" --rpcapi="eth,net,web3,personal"
+```
+
+Cuando hayamos iniciado el nodo, deberemos importar nuestra cuenta si la tenemos y desbloquearla, conectándonos primero a la consola:
+
+```console
+$ geth attach ipc:$HOME/.ethereum/rinkeby/geth.ipc
+
+> personal.importRawKey("<YOUR GENERATED PRIVATE KEY WITHOUT THE LEADING 0x>","<PASSWORD OF YOUR CHOICE>")
+
+```
+Por último deberemos desbloquear nuestra cuenta:
+
+```console
+> personal.unlockAccount("<YOUR ADDRESS>", "<PASSWORD USED EARLIER>", 0)
+```
+
+Podemos obtener un error de permisos, en ese caso deberemos iniciar el nodo con el siguiente parámetro `--allow-insecure-unlock`
+
+En la configuración del provider del api REST deberemos confirmar esta cuenta:
+
+```js
+const provider = new HttpProvider({
+    url: 'http://localhost:8545',
+    requiredConfirmations: 1,
+    accountId: '0x60830a96c835C488A53ac763270d701748505298',
+});
+```
+
 ## 3. <a name="init-express"></a>Iniciar Express(node) API Rest
 
 Una vez hemos iniciado ganache-cli y tras haber ejecutado npm build sobre el raiz del proyecto podemos lanzar el API `express` para ello no necesitamos más que ejecutar en una terminal el siguiente comando que nos iniciará el api en el puerto 3000
