@@ -121,13 +121,13 @@ export const schemaTituloAcademico = {
       type: 'array'
     }
   },
-  required: ['$schema', 'id', 'pdf', 'centro', 'titulo', 'alumno', 'nota', 'fecha', 'emitidoEn'],
+  required: ['$schema', 'id', 'pdf', 'centro', 'titulo', 'alumno', 'modalidad', 'nota', 'fecha', 'emitidoEn'],
   title: 'Academic Certificate Asset',
   type: 'object',
 };
 
 /**
- * schemaId: e0e1a8629cf4b3515d0581825aaf59782daca1444903793cf3cb029ddc672ee6
+ * schemaId: 292e4a1a4c1f74c57ff6c2b180f9f2be5ab1346dfa692c03e4c74ed541417b23
  * Ejemplo
  * {
 	id: 1,
