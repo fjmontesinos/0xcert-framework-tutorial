@@ -1,21 +1,37 @@
 export const schemaTituloAcademico = {
   $schema: 'http://json-schema.org/draft-07/schema',
-  description: 'Un esquema de activos digitales que representan titulos académicos',
+  description: 'Un esquema de activos digitales que representan certificados academicos',
   properties: {
+    '$evidence': {
+      'description': 'A path to the evidence JSON with data needed to verify the asset.',
+      'type': 'string',
+    },
+    '$schema': {
+      'description': 'A path to JSON Schema definition file.',
+      'type': 'string',
+    },
     id: {
-      description: 'Id del título emitido por el centro al alumno',
+      description: 'Id del certificado emitido por el centro al alumno',
       type: 'integer',
     },
+    'pdf': {
+      'description': 'A public property that can be a valid URI pointing to a resource with mime type image/pdf representing the asset to which this NFT represents',
+      'type': 'string',
+    },
     centro: {
-      description: 'Centro que emite el título',
+      description: 'Centro formativo que emite el certificado',
       type: 'string',
     },
     titulo: {
-      description: 'Título emitido',
+      description: 'Nombre del programa o curso certificado',
+      type: 'string',
+    },
+    homologacion: {
+      description: 'Código de homologación necesario en algunos programas',
       type: 'string',
     },
     alumno: {
-      description: 'Alumno al que se le emite el título académico',
+      description: 'Alumno al que se le emite el certificado academico',
       properties: {
         nombre: {
           description: 'Nombre del alumno',
@@ -47,12 +63,24 @@ export const schemaTituloAcademico = {
             pais: {
               description: 'País de nacimiento',
               type: 'string',
-            },
+            }
           },
-          type: 'object',
-        },
+          type: 'object'
+        }
       },
-      type: 'object',
+      type: 'object'
+    },
+    modalidad: {
+      description: 'Modalidad utilizada para realizar el curso, online, presencial, semipresencial',
+      type: 'string',
+    },
+    horasTotales: {
+      description: 'Horas totales que supone la realizacion del curso',
+      type: 'string',
+    },
+    realizadoEn: {
+      description: 'Lugar en el que se realiza el programa formativa en el caso de ser presencial, semipresencial...',
+      type: 'string',
     },
     nota: {
       description: 'Nota alcanzada por el alumno en la tituación',
@@ -62,49 +90,50 @@ export const schemaTituloAcademico = {
       description: 'Fecha en la que el alumno alcanza la titulación en milisegundos UTC.',
       type: 'integer',
     },
-    lugar: {
-      description: 'Lugar desde el que se emite el certificado del título',
+    emitidoEn: {
+      description: 'Lugar desde el que se emite el certificado del certificado academico',
       type: 'string',
     },
     asignaturas: {
-        description: 'Asignaturas que componen cada curso',
-        items: {
-            curso: {
-                description: 'Curso al que pertenece la asignatura',
-                type: 'integer',
-            },
-            nombre: {
-                description: 'Nombre de la asignatura',
-                type: 'string',
-            },
-            horas: {
-                description: 'Número de horas de la asignatura',
-                type: 'string',
-            },
-            nota: {
-                description: 'Nota de la asignatura',
-                type: 'string',
-            },
-            fecha: {
-                description: 'Fecha en alcanzar la nota sobre la asignatura en milisegundos UTC',
-                type: 'integer',
-            },
+      description: 'Asignaturas que componen cada curso',
+      items: {
+        curso: {
+          description: 'Curso al que pertenece la asignatura',
+          type: 'integer',
         },
-        type: 'array'
+        nombre: {
+          description: 'Nombre de la asignatura',
+          type: 'string',
+        },
+        horas: {
+          description: 'Número de horas de la asignatura',
+          type: 'string',
+        },
+        nota: {
+          description: 'Nota de la asignatura',
+          type: 'string',
+        },
+        fecha: {
+          description: 'Fecha en alcanzar la nota sobre la asignatura en milisegundos UTC',
+          type: 'integer',
+        }
+      },
+      type: 'array'
     }
   },
-  title: 'Títulos Académicos Asset',
-  required: ['id', 'centro', 'titulo', 'alumno', 'nota', 'fecha', 'lugar'],
+  required: ['$schema', 'id', 'pdf', 'centro', 'titulo', 'alumno', 'nota', 'fecha', 'emitidoEn'],
+  title: 'Academic Certificate Asset',
   type: 'object',
 };
 
 /**
- *
+ * schemaId: e0e1a8629cf4b3515d0581825aaf59782daca1444903793cf3cb029ddc672ee6
  * Ejemplo
  * {
 	id: 1,
     centro: 'UNIR',
     titulo: 'Experto Universitario en desarrollo Blockchain',
+    homologacion: 'EUDB-20200401-A',
     alumno: {
      	nombre: 'Javier',
         apellidos: 'Montesinos Morcillo',
@@ -116,6 +145,7 @@ export const schemaTituloAcademico = {
             pais: 'España',
         },
     },
+    modalidad: 'Online',
     nota: '10',
     fecha: 1584313200000,
     lugar: 'Logroño',
@@ -137,6 +167,4 @@ export const schemaTituloAcademico = {
     ],
 
 }
-
-schemaId: 2338110315974518e8d0553037efec92a44e3854ef7a6ffa5ccd18b999d3bbc6
  */
